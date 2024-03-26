@@ -1,9 +1,9 @@
-
+import { IoStarOutline } from "react-icons/io5";
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
 const Book = ({ book }) => {
-    const { image, bookName, author, tags, id } = book
+    const { image, bookName, author, tags, category, rating } = book
     return (
         <NavLink to={`/bookDetails/:${book.bookId}`}>
 
@@ -24,9 +24,14 @@ const Book = ({ book }) => {
                 </div>
                 <div className="card-body">
                     <h2 className="card-title">{bookName} </h2>
-                    <h2>{author} </h2>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                    <h2>By: {author} </h2>
+                    <div className="card-actions justify-between">
+                        <h3>{category} </h3>
+                        <div className="flex gap-4 items-center">
+                            <h3>{rating} </h3>
+                            < IoStarOutline className="text-2xl"/>
+                        </div>
+
                     </div>
                 </div>
             </div>
