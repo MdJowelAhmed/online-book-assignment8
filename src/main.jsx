@@ -11,8 +11,6 @@ import ListedBooks from './components/Roots/ListedBooks/ListedBooks.jsx';
 import PagesToRead from './components/Roots/ListedBooks/PagesToRead/PagesToRead.jsx';
 import Upcoming from './components/Upcoming/Upcoming.jsx';
 import Popular from './components/Popular/Popular.jsx';
-
-
 import BookDetails from './components/BookDetails/BookDetails.jsx';
 
 const router = createBrowserRouter([
@@ -23,13 +21,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader:()=>fetch('/public/fakeData.json'),
-        children:[
-          {
-            path:'/bookDetails',
-            element:<BookDetails></BookDetails>
-          },
-        ]
+        loader:()=>fetch('/fakeData.json'),
+        
+      },
+      {
+        path:'/bookDetails/:id',
+        element: <BookDetails></BookDetails>,
+        loader:({params})=>fetch(`/fakeData.json/${params?.id}`),
+       
       },
       {
         path: '/listed',
