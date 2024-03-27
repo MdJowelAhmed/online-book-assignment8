@@ -1,22 +1,49 @@
-import { useEffect, useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+// import { useEffect, useState } from "react";
+import { useLoaderData, useNavigation, useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { Spinner } from "../Utilities/Spinner/Spinner";
+// import { saveReadOrWishList } from "../Utilities/LocalStorage";
+
 
 const BookDetails = () => {
+    const navigation=useNavigation()
     const books = useLoaderData()
+    
     const { bookId } = useParams();
     const idInt = parseInt(bookId);
     const book = books.find(book => book.bookId === idInt);
     // console.log(bookId)
     console.log(book)
+    if(navigation.state==='loading') return <Spinner></Spinner>
     const { tags } = book
 
     const handleReadAndWishList = () => {
-        toast('successfully added')
-    }
+        const saveData=JSON.parse(localStorage.getItem('books')) || [];
+        const isData= saveData.find((item)=>item.bookId==book.bookId);
+        if(isData){
+            return toast.error('Already Read added!')
 
+        }
+        else{
+            saveData.push(book);
+            localStorage.setItem("books", JSON.stringify(saveData))
+            toast.success('Added Read Successfully!')
+        }
+    }
+    const handleWishList = () => {
+        const saveData=JSON.parse(localStorage.getItem('wishList')) || [];
+        const isData= saveData.find((item)=>item.bookId==book.bookId );
+        if(isData && handleReadAndWishList()){
+            return toast.error('Already Wish List added!')
+        }
+        else{
+            saveData.push(book);
+            localStorage.setItem("wishList", JSON.stringify(saveData))
+            toast.success('Added Wish List Success!')
+        }
+    }
     return (
         <div>
             {/* <h2>{book.bookName} </h2> */}
@@ -58,13 +85,13 @@ const BookDetails = () => {
                             <p>Rating <span className=" ml-32 font-bold">{book.rating} </span></p>
                         </div>
                         <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-                            <button onClick={handleReadAndWishList} className="btn btn-success mr-5">Read</button>
-                            <button className="btn btn-secondary ml-5">WishList</button>
+                            <button onClick={()=>handleReadAndWishList()} className="btn btn-success mr-5">Read</button>
+                            <button onClick={()=>handleWishList()} className="btn btn-secondary ml-5">WishList</button>
                         </div>
                     </div>
                 </div>
             </section>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
         </div>
     );
 };

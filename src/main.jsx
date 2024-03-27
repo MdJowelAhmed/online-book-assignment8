@@ -12,6 +12,9 @@ import PagesToRead from './components/Roots/ListedBooks/PagesToRead/PagesToRead.
 import Upcoming from './components/Upcoming/Upcoming.jsx';
 import Popular from './components/Popular/Popular.jsx';
 import BookDetails from './components/BookDetails/BookDetails.jsx';
+import Read from './components/Read/Read.jsx';
+import WishList from './components/WishList/WishList.jsx';
+import { ToastContainer, toast } from 'react-toastify';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +37,16 @@ const router = createBrowserRouter([
         path: '/listed',
         element: <ListedBooks></ListedBooks>,
         loader:()=>fetch('/fakeData.json'),
+        children:[
+          {
+            index:true,
+            element: <Read></Read>
+          },
+          {
+            path: 'wish',
+            element: <WishList></WishList> 
+          }
+        ]
       },
       {
         path: '/pages',
@@ -53,6 +66,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
      <RouterProvider router={router} />
-     
+     <ToastContainer />
   </React.StrictMode>,
 )
