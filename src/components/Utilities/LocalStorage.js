@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
   let books = []
   const storedBooks = localStorage.getItem('books')
   if (storedBooks) {
-    blogs = JSON.parse(storedBooks)
+    books = JSON.parse(storedBooks)
   }
   return books
 }
@@ -27,4 +27,4 @@ const saveReadOrWishList = book => {
   toast.success('Book Removed from read!')
 }
 
-export {getBlogs,saveBlog,deleteBlog}
+export {getStoredBooks, saveReadOrWishList, deleteStoredBooks}
