@@ -53,7 +53,7 @@ const List = ({ book }) => {
             <div className="my-4 flex justify-between">
               <h2 className="bg-amber-50 p-3 rounded-lg font-bold">Category: {category} </h2>
               <h3 className="bg-green-200 p-3 rounded-lg font-bold">Rating: {rating} </h3>
-              <button className="btn btn-primary">Get Started</button>
+              <button className="btn btn-primary">View Details</button>
             </div>
           </div>
         </div>
