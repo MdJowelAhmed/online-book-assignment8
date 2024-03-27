@@ -51,6 +51,7 @@ const router = createBrowserRouter([
       {
         path: '/pages',
         element: <PagesToRead></PagesToRead>,
+        loader:()=>fetch('/fakeData.json'),
       },
       {
         path: '/upcoming',
