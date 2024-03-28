@@ -1,24 +1,61 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Outlet, useLoaderData, useNavigation } from "react-router-dom";
 import { Spinner } from "../../Utilities/Spinner/Spinner";
+import { getStoredBooks } from "../../Utilities/LocalStorage";
+import sortBy from "sort-by";
 
 
 const ListedBooks = () => {
     const book=useLoaderData()
+    const [sortBook, setSortBook]=useState([])
    const navigation=useNavigation()
     console.log(book)
+
+    const handleSortBy=(sort)=>{
+        if(sort==="all"){
+            setSortBook(sortBook)
+        }
+        
+        else if(sort==="rating"){
+            const ratingBook=sortBook.sort(item=>item.rating===4.8)
+            setSortBook(ratingBook)
+        }
+        else if(sort==="numberPages"){
+            const pagesBook=sortBook.sort(item=>item.totalPages===384)
+            setSortBook(pagesBook)
+        }
+        else if(sort==="publisherYear"){
+            const yearBook=sortBook.sort(item=>item.yearOfPublishing===1983)
+            setSortBook(yearBook)
+        }
+    };
+
+    useEffect(()=>{
+        const bookSort=getStoredBooks()
+        if (book.length > 0) {
+            const sortBy = [];
+            for (const id of bookSort) {
+                const books = book.find(b => b.bookId === id);
+                if (books) {
+                    book.push(books)
+                }
+            }
+            setSortBook(sortBy)
+          }
+    }, [book])
    
     const [tabIndex, setTabIndex]=useState(0);
     if(navigation.state==='loading') return <Spinner></Spinner>
     return (
         <div className="mx-5 lg:mx-20">
             <h2 className="text-center text-2xl font-semibold bg-amber-100 py-2 my-4"> Books</h2>
-            <details className="dropdown  flex justify-center ">
-                <summary className="m-1 btn">open or close</summary>
-                <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52 text-center flex flex-col justify-end">
-                    <li className=""><a>Item 1</a></li>
-                    <li><a>Item 2</a></li>
-                    <li><a>Item 2</a></li>
+            <details className="dropdown m-10 mx-auto ">
+                <summary className="m-1 btn">Sort by</summary>
+                <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                    <li onClick={()=>handleSortBy("all")}><a>All</a></li>
+                    <li onClick={()=>handleSortBy("rating")}><a>Rating</a></li>
+                    <li onClick={()=>handleSortBy("numberPages")}><a>Number of Page</a></li>
+                    <li onClick={()=>handleSortBy("publisherYear")}><a>Publish Year</a></li>
                 </ul>
             </details>
 

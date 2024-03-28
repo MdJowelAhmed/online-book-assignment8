@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Spinner } from "../Utilities/Spinner/Spinner";
+import { getStoredBooks } from "../Utilities/LocalStorage";
 // import { saveReadOrWishList } from "../Utilities/LocalStorage";
 
 
@@ -35,7 +36,18 @@ const BookDetails = () => {
     const handleWishList = () => {
         const saveData=JSON.parse(localStorage.getItem('wishList')) || [];
         const isData= saveData.find((item)=>item.bookId==book.bookId );
-        if(isData && handleReadAndWishList()){
+        const books=getStoredBooks()
+        const readData=books.find((item)=> item.bookId==book.bookId);
+        if(readData){
+            return toast.error('Already Read added!')
+        }
+        else{
+            saveData.push(book);
+            localStorage.setItem("wishList", JSON.stringify(saveData))
+            toast.success('Added Wish List Success!')
+        }
+        
+        if(isData){
             return toast.error('Already Wish List added!')
         }
         else{
@@ -43,6 +55,8 @@ const BookDetails = () => {
             localStorage.setItem("wishList", JSON.stringify(saveData))
             toast.success('Added Wish List Success!')
         }
+
+       
     }
     return (
         <div>

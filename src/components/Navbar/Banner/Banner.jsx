@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
     return (
-        <section className="bg-amber-50 h-[500px] px-10 pb-4 mx-5">
+        <section className="bg-amber-50 h-[500px] lg:px-10 pb-4 mx-5">
             <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-                <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+                <div className="flex flex-col justify-center p-3 lg:p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                     <h1 className="text-2xl lg:text-5xl font-bold leading-none">Books to freshen up your bookshelf
                     </h1>
                       <p className="my-4">By reading this book, you will know something about the biography of Prophet Muhammad (PBUH). Hope you read this book</p>  

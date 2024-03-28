@@ -95,8 +95,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="items-center flex-shrink-0 hidden lg:flex lg:ml-10">
-                <button className="self-center px-8 py-3 rounded btn btn-success">Sign in</button>
-                <button className="self-center px-8 py-3 font-semibold rounded btn btn-accent ml-4 ">Sign up</button>
+                <button className="self-center lg:px-8 py-3 rounded btn btn-success">Sign in</button>
+                <button className="self-center lg:px-8 py-3 font-semibold rounded btn btn-accent ml-4 ">Sign up</button>
             </div>
         </div>
     );

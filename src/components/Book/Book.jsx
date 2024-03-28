@@ -8,8 +8,8 @@ const Book = ({ book }) => {
         <NavLink to={`/bookDetails/${book.bookId}`}>
 
             <div className="card w-96 h-[500px]  bg-base-100 shadow-xl">
-                <figure><img className='h-80 mb-3' src={image} alt="Shoes" /></figure>
-                <div className='flex flex-wrap gap-2  text-blue-600 mx-5'>
+                <figure className="p-4  m-5"><img className='h-80' src={image} alt="Shoes" /></figure>
+                <div className='flex flex-wrap gap-2  text-blue-600 ml-5'>
                     {tags &&
                         tags.map(tag => (
                             <a

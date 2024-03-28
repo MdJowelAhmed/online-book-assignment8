@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 import { getStoredBooks } from '../../../Utilities/LocalStorage';
 
 
 
 const PagesToRead = () => {
   const [chart, setChart]=useState([])
+ 
 
   const newData=chart.map(item=>{
     return{
@@ -17,17 +18,15 @@ const PagesToRead = () => {
   useEffect(()=>{
     const bookChart=getStoredBooks()
     setChart(bookChart)
-    console.log(bookChart)
+    // console.log(bookChart)
+    // setSortBook(bookChart)
+    // const bookSort=getStoredBooks()
 },[])
   
 
   const readBook=useLoaderData()
    
   const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
-  // const data = books.map((book) => ({
-  //   bookName: book.bookName,
-  //   totalPages: book.totalPages,
-  // }));
 
   const data = [
     {
@@ -90,9 +89,10 @@ const PagesToRead = () => {
 
 
   return (
+    <ResponsiveContainer width="80%" height="80%">
     <BarChart
-      width={800}
-      height={300}
+     
+      
       data={newData}
       margin={{
         top: 20,
@@ -110,6 +110,7 @@ const PagesToRead = () => {
         ))}
       </Bar>
     </BarChart>
+    </ResponsiveContainer>
   );
 
 }
