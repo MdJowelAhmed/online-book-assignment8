@@ -1,10 +1,10 @@
 <div>
     Website Name: Online Book Assignment
 
-Live Site URL: www.onlinebookassignment.com
+Live Site URL:(https://online-book-assignment.netlify.app/)
     <ul>
         <li>
-        Vast Library Selection: Access a vast collection of books covering various genres, subjects, and languages. From classics to contemporary literature, our library caters to readers of all interests and ages.
+         Vast Library Selection: Access a vast collection of books covering various genres, subjects, and languages. From classics to contemporary literature, our library caters to readers of all interests and ages.
         </li>
 
         <li> User-Friendly Interface: Enjoy a seamless browsing experience with our intuitive and easy-to-navigate interface. Find the perfect book for your assignment with advanced search filters, including author, genre, publication date, and more. </li>
