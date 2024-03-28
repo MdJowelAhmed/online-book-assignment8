@@ -2,15 +2,20 @@ import { IoLocationOutline } from "react-icons/io5";
 import { IoPeople } from "react-icons/io5";
 import { BiMemoryCard } from "react-icons/bi";
 import PropTypes from 'prop-types'
+import { useState } from "react";
+import SortBy from "../SortBy/SortedBy";
 // import { useLoaderData } from 'react-router-dom'
 
 const List = ({ book }) => {
-
   const { image, bookName, author, tags, category, rating, publisher, totalPages, yearOfPublishing } = book
   // console.log(book)
+  
+
 
   return (
+    
     <div >
+      
       <div className="hero bg-base-200 border-2 border-blue-200 rounded-2xl">
         <div className="hero-content flex-col lg:flex-row">
           <img src={image} className="w-72 h-72 rounded-lg shadow-2xl" />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
+import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, XAxis, YAxis } from "recharts";
+// import {  Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 import { getStoredBooks } from '../../../Utilities/LocalStorage';
 
 
@@ -11,7 +12,7 @@ const PagesToRead = () => {
 
   const newData=chart.map(item=>{
     return{
-      bookName:item.bookName.slice(0,15),
+      bookName:item.bookName.slice(0,20),
       totalPages:item.totalPages,
     }
   }) 
@@ -89,10 +90,11 @@ const PagesToRead = () => {
 
 
   return (
-    <ResponsiveContainer width="80%" height="80%">
+    // <ResponsiveContainer >
     <BarChart
      
-      
+      width={500}
+      height={500}
       data={newData}
       margin={{
         top: 20,
@@ -110,7 +112,7 @@ const PagesToRead = () => {
         ))}
       </Bar>
     </BarChart>
-    </ResponsiveContainer>
+    // {/* </ResponsiveContainer> */}
   );
 
 }
