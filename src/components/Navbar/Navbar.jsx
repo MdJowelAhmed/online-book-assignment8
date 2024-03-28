@@ -69,7 +69,7 @@ const Navbar = () => {
 
                     </ul>
                 </div>
-                <h2 className="text-3xl font-bold text-cyan-900"> Online Book</h2>
+                <h2 className="text-3xl font-bold  text-cyan-900"> Online-Book</h2>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -94,7 +94,7 @@ const Navbar = () => {
                     }
                 </ul>
             </div>
-            <div className="items-center flex-shrink-0 hidden lg:flex lg:ml-10">
+            <div className="items-center flex-shrink-0  lg:flex lg:ml-10">
                 <button className="self-center lg:px-8 py-3 rounded btn btn-success">Sign in</button>
                 <button className="self-center lg:px-8 py-3 font-semibold rounded btn btn-accent ml-4 ">Sign up</button>
             </div>
