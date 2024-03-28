@@ -41,12 +41,8 @@ const BookDetails = () => {
         if(readData){
             return toast.error('Already Read added!')
         }
-        else{
-            saveData.push(book);
-            localStorage.setItem("wishList", JSON.stringify(saveData))
-            toast.success('Added Wish List Success!')
-        }
-        
+       
+
         if(isData){
             return toast.error('Already Wish List added!')
         }

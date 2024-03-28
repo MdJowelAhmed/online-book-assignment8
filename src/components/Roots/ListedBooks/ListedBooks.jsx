@@ -9,7 +9,7 @@ const ListedBooks = () => {
     const book=useLoaderData()
     const [sortBook, setSortBook]=useState([])
    const navigation=useNavigation()
-    console.log(book)
+    // console.log(book)
 
     const handleSortBy=(sort)=>{
         if(sort==="all"){
@@ -17,15 +17,17 @@ const ListedBooks = () => {
         }
         
         else if(sort==="rating"){
-            const ratingBook=sortBook.sort(item=>item.rating===4.8)
+            const ratingBook=sortBook.sort(item=>item.rating==4.8)
             setSortBook(ratingBook)
+            // console.log(ratingBook)
         }
         else if(sort==="numberPages"){
-            const pagesBook=sortBook.sort(item=>item.totalPages===384)
+            const pagesBook=sortBook.sort(item=>item.totalPages==384)
             setSortBook(pagesBook)
+            console.log(pagesBook)
         }
         else if(sort==="publisherYear"){
-            const yearBook=sortBook.sort(item=>item.yearOfPublishing===1983)
+            const yearBook=sortBook.sort(item=>item.yearOfPublishing==1983)
             setSortBook(yearBook)
         }
     };
@@ -35,14 +37,20 @@ const ListedBooks = () => {
         if (book.length > 0) {
             const sortBy = [];
             for (const id of bookSort) {
-                const books = book.find(b => b.bookId === id);
+                const books = book.find(b => b.bookId === id.bookId);
                 if (books) {
                     book.push(books)
                 }
+                
             }
             setSortBook(sortBy)
+            // console.log(sortBy)
           }
+        //   const booook=sortBook.sort((a,b)=>a.totalPages.localCompare(b.totalPages))
+        //         console.log(booook)
+        //   console.log(bookSort)
     }, [book])
+    
    
     const [tabIndex, setTabIndex]=useState(0);
     if(navigation.state==='loading') return <Spinner></Spinner>

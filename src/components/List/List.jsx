@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 const List = ({ book }) => {
 
   const { image, bookName, author, tags, category, rating, publisher, totalPages, yearOfPublishing } = book
-  console.log(book)
+  // console.log(book)
 
   return (
     <div >
